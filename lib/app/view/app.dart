@@ -30,6 +30,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,16 +53,22 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            IconButton(
+              // Provide a Key to this button. This allows finding this
+              // specific button inside the test suite, and tapping it.
+              key: const Key('increment'),
+              onPressed: _incrementCounter,
+              tooltip: 'Increment',
+              icon: const Icon(Icons.add),
+            ),
+            IconButton(
+              key: const Key('decrement'),
+              onPressed: _decrementCounter,
+              tooltip: 'Decrement',
+              icon: const Icon(Icons.remove),
+            ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        // Provide a Key to this button. This allows finding this
-        // specific button inside the test suite, and tapping it.
-        key: const Key('increment'),
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
